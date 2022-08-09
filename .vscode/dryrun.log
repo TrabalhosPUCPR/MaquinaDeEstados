@@ -1,8 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/knightleo/Documents/TRABALHOS/ConstInter'
-mkdir -p output
-g++ -std=c++17 -Wall -Wextra -g -Iinclude -c src/main.cpp  -o src/main.o
-g++ -std=c++17 -Wall -Wextra -g -Iinclude -o output/main src/main.o  -Llib
-echo Executing 'all' complete!
-make: Leaving directory '/home/knightleo/Documents/TRABALHOS/ConstInter'
- 

@@ -4,23 +4,24 @@
 using namespace std;
 
 // para ficar mais facil de visualizar
-enum estado {
+enum class estados {
 	sn1 = -1,
 	s0 = 0,
 	s1 = 1,
 	s2 = 2
 };
-// muito legal isso aqui
-estado operator++(estado e){
-	if(e == s2) return s2; // se ja tiver no s2 retorna s2
-	return static_cast<estado>(e + 1); 
+
+estados& operator++(estados& e){
+	if(e == estados::s2) return e = estados::s2; // se ja tiver no s2 retorna s2
+	return e = static_cast<estados>(static_cast<int>(e) + 1);
 }
-estado operator--(estado e){
-	return s0; // sempre q tem o A(--) ele volta pra s0
+
+estados& operator--(estados& e){
+	return e = estados::s0; // sempre q tem o A(--) ele volta pra s0
 }
 
 bool contains(char array[], char value) {
-  	for (int i = 0; i < sizeof(array) / sizeof(int); i++) {
+  	for (int i = 0; i < (sizeof(array) / sizeof(int)); i++) {
     	if (array[i] == value) {
       		return true;
     	}
@@ -30,11 +31,12 @@ bool contains(char array[], char value) {
 
 class Maquina{
 	private:
-		estado estado_atual = sn1;
+		estados estado_atual = estados::sn1;
 		char linguagem[2] = {'a', 'b'};
 		char alfabeto[3] = {'a', 'b', 'c'};
 	public:
-		Maquina();
+		// pro eu do futuro que vai ta lendo isso aqui provavelmente, NAO ESQUECE DE COLOCAR {}
+		Maquina(){};
 
 		// coisas que acontecem nessa maquina de estado finito:
 		// toda vez que ele recebe um A, ele volta pro estado 0.
@@ -43,24 +45,25 @@ class Maquina{
 		// toda vez que a maquina ta no estado s0, deve-se garantir que ela consiga chegar no s2, se nao, a entrada nao pertence
 		// pra isso acontece, toda vez que ele ta no s0, ele ta na expectativa de dois B
 		// retorna falso quando o valor nao pertence e verdadeiro quando pertence
+
+		// os unicos momentos que vai definir que nao pertence e quando recebe um A e a maquina ta no s0 ou no s1
+
 		bool receberEntrada(char entr){
+			bool success = true;
 			// verifica se a entrada pertence o array linguagem
 			if (contains(this->linguagem, entr)) {
 				switch(entr){
 					case 'a':
-						estado_atual--;
+						if(estado_atual == estados::s0 || estado_atual == estados::s1) success = false;
+						--estado_atual;
 					break;
 					case 'b':
+						++estado_atual;
 					break;
 				}
-
-				return true;
-			}else{
-				cout << "naonao";
 			}
-			return false;
+			return success;
 		}
-		void receberEntrada(){ estado_atual = sn1;}
 };
 
 int main() {
@@ -76,21 +79,44 @@ int main() {
 		input >> n_entradas;
 
 		// pula o null e o \n que tem no fim de toda linha
-		input.ignore(2);
+		input.ignore(1);
 
-		// cria o objeto da maquina
-		Maquina maquina;
+		// cria a linguagem e o alfabeto
+		char linguagem[2] = {'a', 'b'};
+		char alfabeto[3] = {'a', 'b', 'c'};
 
 		// comeca o loop para ler todas as linhas
 		while(n_entradas > 0){
 			//cout << "n_entradas: " + to_string(n_entradas) << endl;
+			bool pertence = true;
 			char c;
-			while(input >> noskipws >> c && !isblank(c)){
-				// le o character e manda para a maquina
-				maquina.receberEntrada(c);
+
+			estados estado_atual = estados::sn1;
+
+			while(input >> noskipws >> c && c != '\n'){
+				cout << c;
+				// verifica se a entrada pertence o array linguagem
+				if (contains(linguagem, c)) {
+					switch(c){
+						case 'a':
+							if(estado_atual == estados::s0 || estado_atual == estados::s1) pertence = false;
+							--estado_atual;
+						break;
+						case 'b':
+							++estado_atual;
+						break;
+					}
+				}else{
+					pertence = false;
+				}
+			}
+			cout << " : ";
+			if(pertence && estado_atual == estados::s2){
+				cout << "OK" << endl;
+			}else{
+				cout << "NAO PERTENCE" << endl;
 			}
 			n_entradas--;
-			input.ignore(); // pra pular o \n q vem depois do vazio do fim da linha pra alguma razao
 		}
 	}
 	return 0;
