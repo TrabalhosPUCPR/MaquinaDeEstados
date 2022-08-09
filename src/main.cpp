@@ -15,7 +15,7 @@ enum class states
 states &operator++(states &s)
 {
 	if (s == states::s2 || s == states::sn1)
-		return s = states::s2; // returns s2 when on last and first state
+		return s = states::s2; // returns s2 when on last or first state
 	return s = static_cast<states>(static_cast<int>(s) + 1);
 }
 
