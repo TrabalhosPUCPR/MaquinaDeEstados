@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdbool.h>
+#include <string.h>
 using namespace std;
 
 // para ficar mais facil de visualizar
@@ -12,7 +13,7 @@ enum class estados {
 };
 
 estados& operator++(estados& e){
-	if(e == estados::s2) return e = estados::s2; // se ja tiver no s2 retorna s2
+	if(e == estados::s2 || e == estados::sn1) return e = estados::s2; // se ja tiver no s2 retorna s2
 	return e = static_cast<estados>(static_cast<int>(e) + 1);
 }
 
@@ -31,7 +32,7 @@ bool contains(char array[], char value) {
 
 int main() {
 	ifstream input;
-	input.open("src/input.txt");
+	input.open("input.txt");
 	if(!input){ // caso nao consiga chegar no arquivo
 		cout << "Could not reach file!" << endl;
 	}else{
@@ -59,7 +60,9 @@ int main() {
 			while(input >> noskipws >> c && c != '\n'){
 				linha += c;
 				// verifica se a entrada pertence o array linguagem
-				if (contains(linguagem, c)) {
+				// se a entrada ja nao pertence, ele nao entra na maquina
+				// nao retorna pq ele ainda n pegou todos os characteres da linha
+				if (pertence && contains(linguagem, c)) {
 					switch(c){
 						case 'a':
 							if(estado_atual == estados::s0 || estado_atual == estados::s1) pertence = false;

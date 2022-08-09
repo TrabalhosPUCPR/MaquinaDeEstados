@@ -1,5 +1,5 @@
 5
-abbbabba
+b
 ababbbabb
 bbabbaabb
 abbabbbb

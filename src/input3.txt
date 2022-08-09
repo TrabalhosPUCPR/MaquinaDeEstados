@@ -1,0 +1,4 @@
+2
+abbabb
+bbbabb
+aabbaabbbabb

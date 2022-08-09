@@ -1,5 +1,11 @@
 /Debug/
 
+*
+!/**/
+!*.*
+
 .project
 .cproject
 .settings/
+.vscode/
+*.o
