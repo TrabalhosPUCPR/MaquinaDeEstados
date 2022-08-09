@@ -30,7 +30,6 @@ bool contains(char array[], char value) {
 }
 
 int main() {
-	//maquina.receberEntrada('a');
 	ifstream input;
 	input.open("src/input.txt");
 	if(!input){ // caso nao consiga chegar no arquivo
@@ -41,7 +40,7 @@ int main() {
 		// ler o int que diz a quantidade de entradas que o .txt tem
 		input >> n_entradas;
 
-		// pula o null e o \n que tem no fim de toda linha
+		// pula o \n que tem no fim de toda linha
 		input.ignore(1);
 
 		// cria a linguagem e o alfabeto
