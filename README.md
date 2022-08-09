@@ -3,6 +3,8 @@ Maquina de Estados no C++
 
 ## ENUNCIADO:
 
+[Link para rodar no replit](https://replit.com/@knightleo602/MaquinaDeEstados?v=1#src/main.cpp)
+
 Para  obter  os  pontos  relativos  a  este  trabalho,  você  deverá  criar  um  programa,  utilizando  a
 linguagem  Python, C, ou C++.  Este  programa,  quando  executado,  irá  determinar  se  uma  string de
 entrada  faz  parte  da  linguagem  𝐿    definida  por  𝐿 = {𝑥 | 𝑥 ∈ {𝑎,𝑏}∗ 𝑒 𝑐𝑎𝑑𝑎 𝑎 𝑒𝑚 𝑥 é
