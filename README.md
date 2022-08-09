@@ -35,4 +35,3 @@ contendo um número diferente de strings diferentes. Os arquivos de entrada cria
 devem estar disponíveis tanto no ambiente repl.it quanto no ambiente Github. Observe que o professor
 irá  testar  seu  programa  com  os  arquivos  de  testes  que  você  criar  e  com,  no  mínimo  um  arquivo  de
 testes criado pelo próprio professor.
- */
