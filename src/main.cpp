@@ -29,43 +29,6 @@ bool contains(char array[], char value) {
   	return false;
 }
 
-class Maquina{
-	private:
-		estados estado_atual = estados::sn1;
-		char linguagem[2] = {'a', 'b'};
-		char alfabeto[3] = {'a', 'b', 'c'};
-	public:
-		// pro eu do futuro que vai ta lendo isso aqui provavelmente, NAO ESQUECE DE COLOCAR {}
-		Maquina(){};
-
-		// coisas que acontecem nessa maquina de estado finito:
-		// toda vez que ele recebe um A, ele volta pro estado 0.
-		// toda vez que ele recebe um B, ele incrementa 1, com o valor maximo claro, sendo 2.
-		// seguindo isso mesmo se ele tiver no estado inicial (s-1 ou sn1) ele vai pro s0.
-		// toda vez que a maquina ta no estado s0, deve-se garantir que ela consiga chegar no s2, se nao, a entrada nao pertence
-		// pra isso acontece, toda vez que ele ta no s0, ele ta na expectativa de dois B
-		// retorna falso quando o valor nao pertence e verdadeiro quando pertence
-
-		// os unicos momentos que vai definir que nao pertence e quando recebe um A e a maquina ta no s0 ou no s1
-
-		bool receberEntrada(char entr){
-			bool success = true;
-			// verifica se a entrada pertence o array linguagem
-			if (contains(this->linguagem, entr)) {
-				switch(entr){
-					case 'a':
-						if(estado_atual == estados::s0 || estado_atual == estados::s1) success = false;
-						--estado_atual;
-					break;
-					case 'b':
-						++estado_atual;
-					break;
-				}
-			}
-			return success;
-		}
-};
-
 int main() {
 	//maquina.receberEntrada('a');
 	ifstream input;
@@ -90,11 +53,12 @@ int main() {
 			//cout << "n_entradas: " + to_string(n_entradas) << endl;
 			bool pertence = true;
 			char c;
+			string linha;
 
 			estados estado_atual = estados::sn1;
 
 			while(input >> noskipws >> c && c != '\n'){
-				cout << c;
+				linha += c;
 				// verifica se a entrada pertence o array linguagem
 				if (contains(linguagem, c)) {
 					switch(c){
@@ -110,11 +74,16 @@ int main() {
 					pertence = false;
 				}
 			}
-			cout << " : ";
-			if(pertence && estado_atual == estados::s2){
-				cout << "OK" << endl;
+			if(!pertence || !(estado_atual == estados::s2)){
+				cout << linha;
+				cout << " : ";
+				cout << "nao pertence" << endl;
 			}else{
-				cout << "NAO PERTENCE" << endl;
+				/*
+				cout << linha;
+				cout << " : ";
+				cout << "ok" << endl;
+				*/
 			}
 			n_entradas--;
 		}
