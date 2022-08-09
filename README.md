@@ -13,9 +13,9 @@ contendo várias strings. A primeira linha do arquivo indica quantas strings est
 entrada. As linhas subsequentes contém uma string por linha.  A seguir está um exemplo das linhas que
 podem existir em um arquivo de testes para o programa que você irá desenvolver:
 
-3
-abbaba
-abababb
+3<br /> 
+abbaba<br /> 
+abababb<br /> 
 bbabbaaab
 
 
