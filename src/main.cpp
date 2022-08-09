@@ -58,7 +58,7 @@ int main() {
 
 		// pula o null e o \n que tem no fim de toda linha
 		input.ignore(2);
-
+	//sddssd
 		// comeca o loop para ler todas as linhas
 		while(n_entradas > 0){
 			//cout << "n_entradas: " + to_string(n_entradas) << endl;
