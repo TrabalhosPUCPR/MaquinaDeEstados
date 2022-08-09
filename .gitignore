@@ -1,5 +1,3 @@
-/Debug/
-
 *
 !/**/
 !*.*
@@ -9,3 +7,6 @@
 .settings/
 .vscode/
 *.o
+.zshrc/
+/Debug/
+/Release/

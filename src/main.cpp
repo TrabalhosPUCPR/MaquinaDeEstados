@@ -39,30 +39,40 @@ bool contains(char array[], char value)
 int main()
 {
 	int choice = 1;
-	cout << "Select an option: " << endl;
+	// cout << "Select an option: " << endl;
+	cout << "Selecione uma opcao: " << endl;
 	cout << "1) input1.txt " << endl;
 	cout << "2) input2.txt " << endl;
 	cout << "3) input3.txt " << endl;
 	cout << "4) custom " << endl;
+	cout << "R: ";
 	cin >> choice;
 
 	ifstream input;
+	ofstream output;
 	if (choice == 4)
 	{
-		cout << "Create a .txt file and put it next to main.cpp" << endl;
-		cout << "Do not leave any empty spaces on the first line " << endl;
+		/*
+		cout << "Create a .txt file and put it inside the 'inputs' folder" << endl;
+		cout << "Do not leave any empty spaces on the first line" << endl;
 		cout << "Type the name of the file with the extension:" << endl;
+		*/
+		cout << "Crie um arquivo .txt e coloque-o dentro da pasta 'inputs" << endl;
+		cout << "Nao deixe espaco vazio na primeira linha" << endl;
+		cout << "Digite o nome do arquivo com a extensao:" << endl;
+		cout << "R: ";
 		string file;
 		cin >> file;
-		input.open(file);
+		input.open("inputs-output/" + file);
 	}
 	else
 	{
-		input.open("input" + to_string(choice) + ".txt");
+		input.open("inputs-output/input" + to_string(choice) + ".txt");
 	}
 	if (!input)
 	{
-		cout << "Could not reach file!" << endl;
+		// cout << "Could not find file or selected option doesn't exist!" << endl;
+		cout << "Arquivo nao encontrado ou opcao selecionada nao existe!" << endl;
 	}
 	else
 	{
@@ -76,6 +86,8 @@ int main()
 
 		char lang[2] = {'a', 'b'};
 		char alph[3] = {'a', 'b', 'c'};
+
+		output.open("inputs-output/output.txt");
 
 		while (n_inputs > 0)
 		{
@@ -91,14 +103,14 @@ int main()
 				line += c;
 				// checks if the input is in the language
 				// if the line already doesnt valid, wont send it to the machine
-				if (valid /*&& contains(lang, c)*/) // switch case can detect if its not a or b
+				if (valid /*&& contains(lang, c)*/) // switch case can detect if its not A or B
 				{
-					// the machine initial state is Sn1, when it receives B, goes to s2
-					// whenever it receives A input, reset its state to s0
-					// whenever it receives B input, it goes to the next state
-					// a line is only valid if theres 2 B's after an A
-					// so the only condition of failure is if the machine receives A and its state
-					// is on s0 and s1 or if the final state is not s2
+					// The machine initial state is Sn1, when it receives B, goes to s2
+					// Whenever it receives A input, reset its state to s0
+					// Whenever it receives B input, it goes to the next state
+					// A line is only valid if theres 2 B's after an A
+					// So the only condition of failure is if the machine receives A and its state
+					// is s0 or s1 and if the final state is not s2
 					switch (c)
 					{
 					case 'a':
@@ -119,22 +131,25 @@ int main()
 					valid = false;
 				}
 			}
-			if (!valid || !(current_state == states::s2))
+			output << line + " : ";
+			cout << line + " : ";
+			if (valid && current_state == states::s2)
 			{
-				cout << line;
-				cout << " : ";
-				// cout << "not valid" << endl;
-				cout << "nao pertence" << endl;
+				// cout << "valid" << endl;
+				// output << "valid";
+				cout << "pertence" << endl;
+				output << "pertence" << endl;
 			}
 			else
 			{
-				cout << line;
-				cout << " : ";
-				// cout << "valid" << endl;
-				cout << "ok" << endl;
+				// cout << "not valid" << endl;
+				// output << "not valid";
+				cout << "nao pertence" << endl;
+				output << "nao pertence" << endl;
 			}
 			n_inputs--;
 		}
+		output.close();
 	}
 	return 0;
 }
