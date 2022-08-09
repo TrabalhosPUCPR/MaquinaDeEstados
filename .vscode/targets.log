@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'src/main.o', needed by 'main'.  Stop.
-
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'src/main.o', needed by 'main'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug  8 21:19:57 2022
+# Make data base, printed on Mon Aug  8 21:46:59 2022
 
 # Variables
 
@@ -95,7 +93,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 20632
+VSCODE_PID = 24077
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -199,7 +197,7 @@ FIXPATH = $1
 # environment
 MANAGERPID = 2340
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 20632
+GIO_LAUNCHED_DESKTOP_FILE_PID = 24077
 # makefile (from 'Makefile', line 39)
 SOURCEDIRS := src
 # environment
@@ -243,7 +241,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 GDMSESSION = pop
 # variable set hash-table stats:
-# Load=115/1024=11%, Rehash=0, Collisions=10/173=6%
+# Load=115/1024=11%, Rehash=0, Collisions=14/183=8%
 
 # Pattern-specific Variable Values
 
@@ -251,10 +249,10 @@ GDMSESSION = pop
 
 # Directories
 
-# src (device 2065, inode 14290403): 3 files, no impossibilities.
-# . (device 2065, inode 13902399): 8 files, no impossibilities.
+# src (device 2065, inode 14290403): 5 files, no impossibilities.
+# . (device 2065, inode 13902399): 9 files, no impossibilities.
 
-# 11 files, no impossibilities in 2 directories.
+# 14 files, no impossibilities in 2 directories.
 
 # Implicit Rules
 
@@ -288,10 +286,10 @@ clean:
 
 # Not a target:
 src/main.o:
- 
 #  Implicit rule search has been done.
-#  File does not exist.
-#  File has not been updated.
+#  Last modified 2022-08-08 21:36:23.941424572
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 .DEFAULT:
@@ -301,7 +299,7 @@ src/main.o:
 
 output:
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-08 21:19:44.340328008
+#  Last modified 2022-08-08 21:37:05.680226349
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 71):
@@ -311,7 +309,11 @@ all: output main
 #  Command line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+ 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/10=0%
 #  recipe to execute (from 'Makefile', line 68):
 	@echo Executing 'all' complete!
 
@@ -325,10 +327,36 @@ run: all
 
 main: src/main.o
 #  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := main
+# automatic
+# * := 
+# automatic
+# < := src/main.o
+# automatic
+# + := src/main.o
+# automatic
+# % := 
+# automatic
+# ^ := src/main.o
+# automatic
+# ? := src/main.o
+# automatic
+# | := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=4/18=22%
 #  recipe to execute (from 'Makefile', line 74):
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $(OUTPUTMAIN) $(OBJECTS) $(LFLAGS) $(LIBS)
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 .PHONY: clean
 #  Implicit rule search has not been done.
@@ -336,19 +364,19 @@ main: src/main.o
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=0/30=0%
+# Load=11/1024=1%, Rehash=0, Collisions=0/31=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 149 B / avg = 7 B
-# current buf: size = 8162 B / used = 149 B / count = 20 / avg = 7 B
+# strcache buffers: 1 (0) / strings = 23 / storage = 171 B / avg = 7 B
+# current buf: size = 8162 B / used = 171 B / count = 23 / avg = 7 B
 
-# strcache performance: lookups = 40 / hit rate = 50%
+# strcache performance: lookups = 44 / hit rate = 47%
 # hash-table stats:
-# Load=20/8192=0%, Rehash=0, Collisions=0/40=0%
-# Finished Make data base on Mon Aug  8 21:19:57 2022
+# Load=23/8192=0%, Rehash=0, Collisions=0/44=0%
+# Finished Make data base on Mon Aug  8 21:46:59 2022
 
  
