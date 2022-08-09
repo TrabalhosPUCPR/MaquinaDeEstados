@@ -150,7 +150,7 @@ int main()
 					// Whenever it receives A input, reset its state to s0
 					// Whenever it receives B input, it goes to the next state
 					// A line is only valid if theres 2 B's after an A
-					// So the only condition of failure is if the machine receives A and its state
+					// So the only failure condition is if the machine receives A and its state
 					// is s0 or s1 and if the final state is not s2
 					switch (c)
 					{
