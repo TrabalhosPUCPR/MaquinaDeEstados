@@ -1,4 +1,4 @@
-3 
-abbaba 
-abababb 
-bbabbaaab 
+3
+abbaba
+abababb
+bbabbaaab
